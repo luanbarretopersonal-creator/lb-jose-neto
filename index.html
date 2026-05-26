@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Portal — José Ferreira de Azevedo Neto · Consultoria LB</title>
+<title>Portal — José Neto · Consultoria LB</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -432,12 +432,6 @@ textarea.q-input{resize:vertical;min-height:80px;}
 
 .ex-alt-wrap{display:flex;align-items:center;gap:6px;margin-top:4px;}.ex-alt-btn{background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold);font-size:11px;padding:1px 8px;border-radius:3px;cursor:pointer;font-weight:700;}.ex-alt-content{font-size:10px;color:var(--white-dim);}.ex-alt-label{color:var(--gold);font-weight:600;margin-right:4px;}.ex-conj{color:var(--gold);font-size:9px;display:block;margin-top:2px;}.ig-link{display:inline-block;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.25);color:var(--gold);font-size:10px;padding:4px 12px;border-radius:2px;text-decoration:none;}.biblio-block{background:var(--dark2);border:1px solid var(--border);border-radius:4px;overflow:hidden;margin-bottom:20px;}.biblio-block-title{background:linear-gradient(90deg,#1a1500,var(--dark2));border-bottom:1px solid var(--border);padding:13px 20px;font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--gold);}.biblio-item{padding:16px 20px;border-bottom:1px solid rgba(255,255,255,0.04);}.biblio-item:last-child{border-bottom:none;}.biblio-tag{font-size:10px;font-weight:700;letter-spacing:1px;color:var(--gold);text-transform:uppercase;margin-bottom:8px;}.biblio-item p{font-size:11px;color:var(--white-dim);line-height:1.9;}
 
-
-
-
-@media(max-width:500px){.nav-title span{display:none;}}
-
-
 /* ── SEMANA TABS (CARDIO) ────────────────────────────────────── */
 
 
@@ -469,15 +463,25 @@ textarea.q-input{resize:vertical;min-height:80px;}
 .semana-tab{flex-shrink:0;background:var(--dark2);border:1px solid var(--border);color:var(--white-dim);font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:1px;text-transform:uppercase;padding:11px 14px;min-height:40px;cursor:pointer;border-radius:2px;transition:all 0.3s;white-space:nowrap;-webkit-tap-highlight-color:transparent;}
 .semana-tab.active{color:var(--gold);border-color:var(--gold);background:var(--gold-dim);}
 
+
+/* ── NAV MOBILE ── */
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:nowrap;}
+.nav-right{display:flex;align-items:center;gap:6px;flex:1;min-width:0;flex-wrap:nowrap;}
+.nav-tabs{display:flex;gap:3px;overflow-x:auto;-webkit-overflow-scrolling:touch;flex-wrap:nowrap;flex:1;min-width:0;padding:8px 0;scrollbar-width:none;}
+.nav-tabs::-webkit-scrollbar{display:none;}
+.tab-btn{white-space:nowrap;flex-shrink:0;min-height:40px;-webkit-tap-highlight-color:transparent;}
+@media(max-width:480px){.nav-title span{display:none;}.nav-brand{max-width:100px;}}
+/* ── TREINO TABS ── */
+.treino-content{display:none;}
+.treino-content.active{display:block;animation:fadeUp 0.4s ease;}
+.treino-tab.active{color:var(--gold);border-color:var(--gold);background:var(--gold-dim);}
 </style>
 </head>
 <body>
 <nav>
   <div class="nav-inner">
     <div class="nav-brand">
-      <div class="nav-logo">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2L3 7v10l9 5 9-5V7L12 2z" stroke="#C9A84C" stroke-width="1.5" fill="none"/><path d="M12 2v20M3 7l9 5 9-5" stroke="#C9A84C" stroke-width="1" opacity="0.5"/></svg>
-      </div>
+      <div class="nav-logo"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2L3 7v10l9 5 9-5V7L12 2z" stroke="#C9A84C" stroke-width="1.5" fill="none"/><path d="M12 2v20M3 7l9 5 9-5" stroke="#C9A84C" stroke-width="1" opacity="0.5"/></svg></div>
       <div class="nav-title">LUAN BARRETO<span>Nutricionista &amp; Treinador</span></div>
     </div>
     <div class="nav-right">
@@ -553,167 +557,121 @@ Suporte: segunda a sexta, 8h às 18h. 💬</div>
 </section>
 
 <section id="dieta" class="section">
-  <div class="section-header"><h2>Plano <span>Alimentar</span></h2><div class="section-line"></div></div>
-  <div class="alert-box alert-gold" style="margin-bottom:20px;">
-    <strong>👨‍🍳 Atenção:</strong> As ~1.640 kcal não contam as provas do trabalho. Foi criada margem de 400–600 kcal para isso. O almoço tem menor volume intencionalmente.
+  <div class="section-header"><h2>Planejamento <span>Alimentar</span></h2><div class="section-line"></div></div>
+  <div class="sub-search-wrap"><h4>🔍 Busca rápida de substitutos</h4><input class="sub-search-input" type="text" id="subSearch" placeholder="Digite o alimento..." oninput="searchSubs()"><div id="sub-results"></div></div>
+    <div style="background:rgba(251,191,36,0.06);border:1px solid rgba(251,191,36,0.2);border-radius:3px;padding:10px 14px;margin-bottom:12px;font-size:11px;color:#fbbf24;line-height:1.9;">
+    ☕ <strong>Jejum intermitente:</strong> Por conta das provas e degustações inevitáveis no trabalho, o café da manhã foi retirado. A primeira refeição é o almoço. As ~1.640 kcal não contam as provas do trabalho — há margem de 400–600 kcal absorvida pelo plano.
   </div>
-  <div class="sub-search">
-    <h4>🔍 Busca Rápida de Substitutos</h4>
-    <input type="text" id="subInput" placeholder="Digite um alimento para ver substituições..." oninput="searchSub(this.value)"/>
-    <div class="sub-result" id="subResult"></div>
-  </div>
+  <div class="meal-total"><div class="total-pill"><span class="label">Total diário</span><span class="value">~1.640</span><span style="font-size:10px;color:var(--white-dim);">kcal</span></div></div>
+
   <div class="meal-card">
-    <h3>Refeição 1 — Café da Manhã</h3>
-    <div class="meal-time">Horário em aberto · Idealmente pós-cardio em jejum</div>
-    <div class="meal-table-wrap"><table class="meal-table">
-      <thead><tr><th>Alimento</th><th>Qtd</th><th>kcal</th><th>Carbo(g)</th><th>Prot(g)</th><th>Gord(g)</th><th>Substituições</th></tr></thead>
-      <tbody>
-        <tr><td class="food-name">Claras de ovo</td><td>4 un</td><td>68</td><td>1,2</td><td>14,4</td><td>0,0</td><td>—</td></tr>
-        <tr><td class="food-name">Ovo inteiro</td><td>1 un</td><td>78</td><td>0,4</td><td>6,7</td><td>5,5</td><td>Frango 80g · Atum 80g · Patinho 80g · Whey 25g · Sardinha 80g · Tilápia 80g</td></tr>
-        <tr><td class="food-name">Pão integral</td><td>2 fatias (50g)</td><td>124</td><td>22,6</td><td>5,0</td><td>1,8</td><td>Tapioca 50g · Cuscuz 80g · Aveia 30g · Granola 30g · Batata-doce 100g · Biscoito de arroz 30g</td></tr>
-        <tr><td class="food-name">Mamão</td><td>150g</td><td>55</td><td>14,2</td><td>0,8</td><td>0,1</td><td>Banana · Maçã · Melão 200g · Uva 120g · Abacaxi 200g · Morango 200g</td></tr>
-        <tr class="total-row"><td colspan="2">Total</td><td>325</td><td>38g</td><td>27g</td><td>7g</td><td></td></tr>
-      </tbody>
-    </table></div>
+    <div class="meal-header"><div class="meal-header-left"><div class="meal-num">1</div><div><div class="meal-name">Almoço</div><span class="meal-time">No trabalho · Volume reduzido — conta com provas e degustações</span></div></div><div class="meal-kcal">232 <span>kcal</span></div></div>
+    <div class="meal-table-wrap"><table class="meal-table"><thead><tr><th>Alimento</th><th>Qtd.</th><th>kcal</th><th>Substituições</th></tr></thead><tbody>
+      <tr><td class="food-name">Verduras e vegetais</td><td class="food-qty">200g</td><td class="food-kcal">46</td><td class="food-sub">Brócolis · Cenoura · Abobrinha · Vagem · Couve · Espinafre · Beterraba · Aspargos · Pepino</td></tr>
+      <tr><td class="food-name">Peito de frango</td><td class="food-qty">150g</td><td class="food-kcal">186</td><td class="food-sub">Patinho <strong>120g</strong> · Tilápia <strong>140g</strong> · Atum <strong>120g</strong> · Merluza <strong>150g</strong> · Sardinha <strong>120g</strong> · Ovos <strong>3un</strong></td></tr>
+    </tbody></table></div>
+    <div style="background:rgba(201,168,76,0.05);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:3px;padding:8px 12px;margin-top:8px;font-size:10px;color:var(--white-dim);">👨‍🍳 <strong style="color:var(--gold)">Volume reduzido intencionalmente.</strong> Provas e degustações do trabalho complementam esta refeição.</div>
     <div class="swipe-hint">← deslize →</div>
-    <div class="meal-obs"><textarea id="obs-r1" placeholder="Observações..." onblur="saveObs('r1',this.value)"></textarea></div>
+    <div class="meal-obs-area"><textarea placeholder="Observações..." data-key="meal-obs-r1" onchange="saveObs(this)"></textarea></div>
   </div>
+
   <div class="meal-card">
-    <h3>Refeição 2 — Almoço (volume reduzido)</h3>
-    <div class="meal-time">No trabalho · Volume menor — conta com provas e degustações</div>
-    <div class="meal-table-wrap"><table class="meal-table">
-      <thead><tr><th>Alimento</th><th>Qtd</th><th>kcal</th><th>Carbo(g)</th><th>Prot(g)</th><th>Gord(g)</th><th>Substituições</th></tr></thead>
-      <tbody>
-        <tr><td class="food-name">Verduras e vegetais</td><td>200g</td><td>46</td><td>8,5</td><td>2,8</td><td>0,5</td><td>Brócolis · Cenoura · Abobrinha · Vagem · Couve · Espinafre · Beterraba · Aspargos · Pepino</td></tr>
-        <tr><td class="food-name">Peito de frango</td><td>150g</td><td>186</td><td>0,0</td><td>41,3</td><td>2,0</td><td>Patinho 120g · Tilápia 140g · Atum 120g · Merluza 150g · Sardinha 120g · Ovos 3un</td></tr>
-        <tr class="total-row"><td colspan="2">Total</td><td>232</td><td>9g</td><td>44g</td><td>3g</td><td></td></tr>
-      </tbody>
-    </table></div>
+    <div class="meal-header"><div class="meal-header-left"><div class="meal-num">2</div><div><div class="meal-name">Pré-Treino</div><span class="meal-time">~60–90 min antes do treino noturno</span></div></div><div class="meal-kcal">455 <span>kcal</span></div></div>
+    <div class="meal-table-wrap"><table class="meal-table"><thead><tr><th>Alimento</th><th>Qtd.</th><th>kcal</th><th>Substituições</th></tr></thead><tbody>
+      <tr><td class="food-name">Whey protein</td><td class="food-qty">40g</td><td class="food-kcal">156</td><td class="food-sub">Frango <strong>100g</strong> · Atum <strong>100g</strong> · Ovos <strong>3un</strong> · Queijo cottage <strong>150g</strong> · Iogurte grego zero <strong>180g</strong> · Patinho <strong>100g</strong></td></tr>
+      <tr><td class="food-name">Granola sem açúcar ou Aveia</td><td class="food-qty">30g</td><td class="food-kcal">130</td><td class="food-sub">Aveia <strong>30g</strong> · Pão integral <strong>1 fatia</strong> · Tapioca <strong>40g</strong> · Batata-doce <strong>80g</strong> · Cuscuz <strong>60g</strong> · Biscoito de arroz <strong>30g</strong></td></tr>
+      <tr><td class="food-name">Iogurte zero ou Leite desnatado</td><td class="food-qty">200ml</td><td class="food-kcal">80</td><td class="food-sub">Iogurte grego zero <strong>150g</strong> · Queijo cottage <strong>150g</strong> · Leite desnatado <strong>250ml</strong> · Kefir <strong>200ml</strong> · Coalhada seca <strong>100g</strong></td></tr>
+      <tr><td class="food-name">Banana</td><td class="food-qty">1 un (100g)</td><td class="food-kcal">89</td><td class="food-sub">Maçã <strong>150g</strong> · Mamão <strong>200g</strong> · Pêra <strong>150g</strong> · Uva <strong>120g</strong> · Melão <strong>200g</strong> · Abacaxi <strong>180g</strong></td></tr>
+    </tbody></table></div>
     <div class="swipe-hint">← deslize →</div>
-    <div style="font-size:10px;color:rgba(201,168,76,0.7);margin-top:8px;padding:8px 12px;background:rgba(201,168,76,0.05);border-radius:3px;">👨‍🍳 Volume reduzido intencionalmente. Provas e degustações do trabalho complementam esta refeição.</div>
-    <div class="meal-obs"><textarea id="obs-r2" placeholder="Observações..." onblur="saveObs('r2',this.value)"></textarea></div>
+    <div class="meal-obs-area"><textarea placeholder="Observações..." data-key="meal-obs-r2" onchange="saveObs(this)"></textarea></div>
   </div>
+
   <div class="meal-card">
-    <h3>Refeição 3 — Pré-Treino</h3>
-    <div class="meal-time">~60–90 min antes do treino noturno</div>
-    <div class="meal-table-wrap"><table class="meal-table">
-      <thead><tr><th>Alimento</th><th>Qtd</th><th>kcal</th><th>Carbo(g)</th><th>Prot(g)</th><th>Gord(g)</th><th>Substituições</th></tr></thead>
-      <tbody>
-        <tr><td class="food-name">Whey protein</td><td>40g</td><td>156</td><td>4,0</td><td>30,0</td><td>2,0</td><td>Frango 100g · Atum 100g · Ovos 3un · Queijo cottage 150g · Iogurte grego zero 180g · Patinho 100g</td></tr>
-        <tr><td class="food-name">Granola sem açúcar ou Aveia</td><td>30g</td><td>130</td><td>20,0</td><td>3,0</td><td>4,0</td><td>Aveia 30g · Pão integral 1 fatia · Tapioca 40g · Batata-doce 80g · Cuscuz 60g · Biscoito de arroz 30g</td></tr>
-        <tr><td class="food-name">Iogurte zero ou Leite desnatado</td><td>200ml</td><td>80</td><td>12,0</td><td>8,0</td><td>0,0</td><td>Iogurte grego zero 150g · Queijo cottage 150g · Leite desnatado 250ml · Kefir 200ml · Coalhada seca 100g · Bebida vegetal 200ml</td></tr>
-        <tr><td class="food-name">Banana</td><td>1 un (100g)</td><td>89</td><td>23,0</td><td>1,1</td><td>0,3</td><td>Maçã 150g · Mamão 200g · Pera 150g · Uva 120g · Melão 200g · Abacaxi 180g</td></tr>
-        <tr class="total-row"><td colspan="2">Total</td><td>455</td><td>59g</td><td>42g</td><td>6g</td><td></td></tr>
-      </tbody>
-    </table></div>
+    <div class="meal-header"><div class="meal-header-left"><div class="meal-num">3</div><div><div class="meal-name">Jantar</div><span class="meal-time">Após o treino noturno — pós-treino</span></div></div><div class="meal-kcal">499 <span>kcal</span></div></div>
+    <div class="meal-table-wrap"><table class="meal-table"><thead><tr><th>Alimento</th><th>Qtd.</th><th>kcal</th><th>Substituições</th></tr></thead><tbody>
+      <tr><td class="food-name">Arroz branco</td><td class="food-qty">100g</td><td class="food-kcal">131</td><td class="food-sub">Batata-doce <strong>130g</strong> · Macarrão <strong>80g</strong> · Aipim <strong>100g</strong> · Cuscuz <strong>80g</strong> · Batata inglesa <strong>150g</strong> · Inhame <strong>100g</strong></td></tr>
+      <tr><td class="food-name">Feijão</td><td class="food-qty">100g</td><td class="food-kcal">76</td><td class="food-sub">Lentilha <strong>100g</strong> · Grão-de-bico <strong>100g</strong> · Ervilha <strong>100g</strong> · Feijão-fradinho <strong>100g</strong></td></tr>
+      <tr><td class="food-name">Verduras e vegetais</td><td class="food-qty">200g</td><td class="food-kcal">46</td><td class="food-sub">Brócolis · Cenoura · Abobrinha · Vagem · Couve · Espinafre · Beterraba · Aspargos · Pepino</td></tr>
+      <tr><td class="food-name">Peito de frango</td><td class="food-qty">150g</td><td class="food-kcal">186</td><td class="food-sub">Patinho <strong>120g</strong> · Tilápia <strong>140g</strong> · Atum <strong>120g</strong> · Merluza <strong>150g</strong> · Sardinha <strong>120g</strong> · Ovos <strong>3un</strong></td></tr>
+      <tr><td class="food-name">Frutas baixa caloria</td><td class="food-qty">150g</td><td class="food-kcal">60</td><td class="food-sub">Melão · Melancia · Mamão · Abacaxi · Morango</td></tr>
+    </tbody></table></div>
     <div class="swipe-hint">← deslize →</div>
-    <div class="meal-obs"><textarea id="obs-r3" placeholder="Observações..." onblur="saveObs('r3',this.value)"></textarea></div>
+    <div class="meal-obs-area"><textarea placeholder="Observações..." data-key="meal-obs-r3" onchange="saveObs(this)"></textarea></div>
   </div>
-  <div class="meal-card">
-    <h3>Refeição 4 — Jantar (pós-treino)</h3>
-    <div class="meal-time">Após o treino noturno</div>
-    <div class="meal-table-wrap"><table class="meal-table">
-      <thead><tr><th>Alimento</th><th>Qtd</th><th>kcal</th><th>Carbo(g)</th><th>Prot(g)</th><th>Gord(g)</th><th>Substituições</th></tr></thead>
-      <tbody>
-        <tr><td class="food-name">Arroz branco</td><td>100g</td><td>131</td><td>28,9</td><td>2,4</td><td>0,1</td><td>Batata-doce 130g · Macarrão 80g · Aipim 100g · Cuscuz 80g · Batata inglesa 150g · Inhame 100g</td></tr>
-        <tr><td class="food-name">Feijão</td><td>100g</td><td>76</td><td>13,6</td><td>4,8</td><td>0,5</td><td>Lentilha 100g · Grão-de-bico 100g · Ervilha 100g · Feijão-fradinho 100g · Edamame 80g · Soja cozida 80g</td></tr>
-        <tr><td class="food-name">Verduras e vegetais</td><td>200g</td><td>46</td><td>8,5</td><td>2,8</td><td>0,5</td><td>Brócolis · Cenoura · Abobrinha · Vagem · Couve · Espinafre · Beterraba · Aspargos · Pepino</td></tr>
-        <tr><td class="food-name">Peito de frango</td><td>150g</td><td>186</td><td>0,0</td><td>41,3</td><td>2,0</td><td>Patinho 120g · Tilápia 140g · Atum 120g · Merluza 150g · Sardinha 120g · Ovos 3un</td></tr>
-        <tr><td class="food-name">Frutas baixa caloria</td><td>150g</td><td>60</td><td>14,5</td><td>0,8</td><td>0,2</td><td>Melão · Melancia · Mamão · Abacaxi · Morango</td></tr>
-        <tr class="total-row"><td colspan="2">Total</td><td>499</td><td>66g</td><td>52g</td><td>3g</td><td></td></tr>
-      </tbody>
-    </table></div>
-    <div class="swipe-hint">← deslize →</div>
-    <div class="meal-obs"><textarea id="obs-r4" placeholder="Observações..." onblur="saveObs('r4',this.value)"></textarea></div>
+
+  <div class="meal-card" style="border-color:rgba(99,102,241,0.4);">
+    <div class="meal-header"><div class="meal-header-left"><div class="meal-num" style="background:rgba(99,102,241,0.2);border-color:rgba(99,102,241,0.4);">💊</div><div><div class="meal-name">Suplementação</div><span class="meal-time">Sem restrição de horário</span></div></div><div class="meal-kcal" style="color:rgba(99,102,241,0.9);">diária</div></div>
+    <div style="font-size:11px;color:var(--white-dim);padding:12px 4px;line-height:2.2;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;">
+        <div style="background:rgba(99,102,241,0.06);border:1px solid rgba(99,102,241,0.2);border-radius:4px;padding:12px 14px;"><strong style="color:rgba(99,102,241,0.9);">Maca Peruana</strong><br>Manter uso habitual · sem restrição de horário</div>
+        <div style="background:rgba(99,102,241,0.06);border:1px solid rgba(99,102,241,0.2);border-radius:4px;padding:12px 14px;"><strong style="color:rgba(99,102,241,0.9);">Tribulus Terrestris</strong><br>Manter uso habitual · sem restrição de horário</div>
+        <div style="background:rgba(99,102,241,0.06);border:1px solid rgba(99,102,241,0.2);border-radius:4px;padding:12px 14px;"><strong style="color:rgba(99,102,241,0.9);">Creatina</strong><br>5g/dia · pode misturar com qualquer refeição · sem restrição de horário</div>
+      </div>
+    </div>
   </div>
-  <div class="meal-card" style="border-color:var(--gold);background:linear-gradient(135deg,rgba(201,168,76,0.06),var(--dark2));">
-    <h3>Total Diário</h3>
-    <div class="meal-table-wrap"><table class="meal-table">
-      <thead><tr><th>Cenário</th><th>Energia</th><th>Carboidratos</th><th>Proteínas</th><th>Gorduras</th></tr></thead>
-      <tbody>
-        <tr><td style="color:var(--white-dim);">Plano base</td><td style="color:var(--gold);font-size:20px;font-weight:700;">~1.511 kcal</td><td style="color:var(--blue);">171g</td><td style="color:var(--green);">166g</td><td style="color:#f8c464;">19g</td></tr>
-        <tr><td style="color:var(--white-dim);">Com provas do trabalho</td><td style="color:#f8c464;font-size:16px;font-weight:600;">~1.900–2.100 kcal</td><td colspan="3" style="color:var(--white-dim);font-size:10px;">Margem de 400–600 kcal absorvida pelo plano</td></tr>
-      </tbody>
-    </table></div>
-    <div class="swipe-hint">← deslize →</div>
-  </div>
+
 </section>
 
 <section id="treino" class="section">
-  <div class="section-header"><h2>Plano de <span>Treino</span></h2><div class="section-line"></div></div>
-  <div class="alert-box alert-gold" style="margin-bottom:20px;">
-    <strong>📋 Lógica ABC:</strong> Se fizer 5 treinos/semana, continue a sequência na semana seguinte. S1: A·B·C·A·B → S2: C·A·B·C·A. Todos os grupos recebem estímulo equilibrado.
+  <div class="section-header"><h2>Planejamento de <span>Treino</span></h2><div class="section-line"></div></div>
+  <div style="background:rgba(201,168,76,0.06);border:1px solid var(--border);border-radius:4px;padding:12px 16px;margin-bottom:18px;font-size:11px;color:var(--white-dim);line-height:1.9;">
+    📋 <strong style="color:var(--white)">Lógica ABC:</strong> Se fizer 5 treinos/semana, continue a sequência na semana seguinte. S1: A·B·C·A·B → S2: C·A·B·C·A. Todos os grupos recebem estímulo equilibrado.
   </div>
+
   <div class="treino-tabs">
-    <button class="treino-tab active" onclick="showTreino('fa',this)">Full Body A</button>
-    <button class="treino-tab" onclick="showTreino('fb',this)">Full Body B</button>
-    <button class="treino-tab" onclick="showTreino('fc',this)">Full Body C</button>
+    <button class="treino-tab active" onclick="showTreino('A',this)">Full Body A</button>
+    <button class="treino-tab" onclick="showTreino('B',this)">Full Body B</button>
+    <button class="treino-tab" onclick="showTreino('C',this)">Full Body C</button>
   </div>
-  <div id="treino-fa" class="treino-content active">
-    <div class="meal-card">
-      <h3>Full Body A</h3>
-      <div class="exercise-table-wrap"><table class="exercise-table">
-        <thead><tr><th>Exercício</th><th>Séries</th><th>Reps</th><th>Carga</th><th>Vídeo</th></tr></thead>
-        <tbody>
-          <tr><td class="ex-name">Agachamento Smith</td><td>4</td><td>8–10</td><td>Progressiva</td><td><a href="https://www.youtube.com/results?search_query=agachamento+smith+execucao" target="_blank" class="video-btn">▶ VER</a></td></tr>
-          <tr><td class="ex-name">Supino Reto</td><td>4</td><td>8–10</td><td>Progressiva</td><td><a href="https://www.youtube.com/results?search_query=supino+reto+execucao" target="_blank" class="video-btn">▶ VER</a></td></tr>
-          <tr><td class="ex-name">Puxada Aberta</td><td>4</td><td>8–10</td><td>Progressiva</td><td><a href="https://drive.google.com/file/d/1sxb5t6UoFf8B3a6OXy1uKluyttzCDINZ/view?usp=sharing" target="_blank" class="video-btn">▶ VER</a></td></tr>
-          <tr><td class="ex-name">Remada Máquina Neutra</td><td>3</td><td>10–12</td><td>Moderada</td><td><a href="https://drive.google.com/file/d/1rLG1qgkC6VZ2HagpOtIKzskzaKsWG977/view?usp=sharing" target="_blank" class="video-btn">▶ VER</a></td></tr>
-          <tr><td class="ex-name">Mesa Flexora</td><td>3</td><td>10–12</td><td>Moderada</td><td><a href="https://drive.google.com/file/d/1sirxKDE_YlDKDSROYD3d83raodQW-2TD/view?usp=sharing" target="_blank" class="video-btn">▶ VER</a></td></tr>
-          <tr><td class="ex-name">Desenvolvimento Sentado com Halteres</td><td>3</td><td>10–12</td><td>Moderada</td><td><a href="https://drive.google.com/file/d/1od8U4dsUyufbcKSqLUcwN0xcSLHnvhK3/view?usp=sharing" target="_blank" class="video-btn">▶ VER</a></td></tr>
-          <tr><td class="ex-name">Rosca Direta na Polia com Barra W</td><td>3</td><td>10–12</td><td>Moderada</td><td><a href="https://www.youtube.com/results?search_query=rosca+direta+polia+barra+w+execucao" target="_blank" class="video-btn">▶ VER</a></td></tr>
-          <tr><td class="ex-name">Tríceps Corda</td><td>3</td><td>12–15</td><td>Moderada</td><td><a href="https://www.youtube.com/results?search_query=triceps+corda+polia+execucao" target="_blank" class="video-btn">▶ VER</a></td></tr>
-          <tr style="background:rgba(201,168,76,0.03);"><td class="ex-name" style="color:var(--gold-light);font-style:italic;">— CORE —</td><td colspan="4" style="color:var(--white-dim);font-size:10px;font-style:italic;">Ao final</td></tr>
-          <tr><td class="ex-name">Prancha Isométrica</td><td>3</td><td>30–45s</td><td>Corporal</td><td><a href="https://www.youtube.com/results?search_query=prancha+isometrica+execucao" target="_blank" class="video-btn">▶ VER</a></td></tr>
-          <tr><td class="ex-name">Abdominal Supra no Solo</td><td>3</td><td>15–20</td><td>Corporal</td><td><a href="https://www.youtube.com/results?search_query=abdominal+supra+solo+execucao" target="_blank" class="video-btn">▶ VER</a></td></tr>
-        </tbody>
-      </table></div>
-      <div class="swipe-hint">← deslize →</div>
-    </div>
+
+<div id="treino-A" class="treino-content active">
+  <div class="treino-header">
+    <div><div class="treino-title">Full Body A</div></div>
+    <div class="treino-day">💪 Seg / Qui</div>
   </div>
-  <div id="treino-fb" class="treino-content">
-    <div class="meal-card">
-      <h3>Full Body B</h3>
-      <div class="exercise-table-wrap"><table class="exercise-table">
-        <thead><tr><th>Exercício</th><th>Séries</th><th>Reps</th><th>Carga</th><th>Vídeo</th></tr></thead>
-        <tbody>
-          <tr><td class="ex-name">Leg Press</td><td>4</td><td>10–12</td><td>Progressiva</td><td><a href="https://drive.google.com/file/d/1xBoO6qds5YoocHs2cMK6DDOwDAWGzTcZ/view?usp=sharing" target="_blank" class="video-btn">▶ VER</a></td></tr>
-          <tr><td class="ex-name">Supino Inclinado com Halteres</td><td>4</td><td>8–10</td><td>Progressiva</td><td><a href="https://www.youtube.com/results?search_query=supino+inclinado+halteres+execucao" target="_blank" class="video-btn">▶ VER</a></td></tr>
-          <tr><td class="ex-name">Pull Down Barra Reta</td><td>4</td><td>10–12</td><td>Progressiva</td><td><a href="https://www.youtube.com/results?search_query=pulldown+barra+reta+execucao" target="_blank" class="video-btn">▶ VER</a></td></tr>
-          <tr><td class="ex-name">Remada Baixa Triângulo</td><td>3</td><td>10–12</td><td>Moderada</td><td><a href="https://drive.google.com/file/d/1rLG1qgkC6VZ2HagpOtIKzskzaKsWG977/view?usp=sharing" target="_blank" class="video-btn">▶ VER</a></td></tr>
-          <tr><td class="ex-name">Subida no Caixote</td><td>3</td><td>12 cada</td><td>Corporal</td><td><a href="https://drive.google.com/file/d/1S5X-RNSaiMua1BZXfQ6eLN6D-Cuu7QlH/view?usp=sharing" target="_blank" class="video-btn">▶ VER</a></td></tr>
-          <tr><td class="ex-name">Elevação Lateral</td><td>4</td><td>12–15</td><td>Moderada</td><td><a href="https://drive.google.com/file/d/1NGqW9xq7yFGUv_U_TnEDNtJg23aKEG3M/view?usp=sharing" target="_blank" class="video-btn">▶ VER</a></td></tr>
-          <tr><td class="ex-name">Crucifixo Invertido</td><td>3</td><td>12–15</td><td>Moderada</td><td><a href="https://drive.google.com/file/d/1NdJPRNzEE-HuijZs9z79V_lKlwoUmSVX/view?usp=sharing" target="_blank" class="video-btn">▶ VER</a></td></tr>
-          <tr style="background:rgba(201,168,76,0.03);"><td class="ex-name" style="color:var(--gold-light);font-style:italic;">— CORE —</td><td colspan="4" style="color:var(--white-dim);font-size:10px;font-style:italic;">Ao final</td></tr>
-          <tr><td class="ex-name">Abdominal Remador</td><td>3</td><td>12–15</td><td>Corporal</td><td><a href="https://www.youtube.com/results?search_query=abdominal+remador+execucao" target="_blank" class="video-btn">▶ VER</a></td></tr>
-          <tr><td class="ex-name">Abdominal Máquina</td><td>3</td><td>12–15</td><td>Moderada</td><td><a href="https://www.youtube.com/results?search_query=abdominal+maquina+execucao" target="_blank" class="video-btn">▶ VER</a></td></tr>
-        </tbody>
-      </table></div>
-      <div class="swipe-hint">← deslize →</div>
-    </div>
+  <div class="meal-card"><table class="exercise-table"><thead><tr><th>Exercício</th><th>Séries</th><th>Reps</th><th>Carga</th><th>Vídeo</th></tr></thead><tbody><tr><td class="ex-name">Agachamento Smith</td><td class="ex-series">4</td><td class="ex-reps">8–10</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trA-ex1" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trA','ex1','Agachamento Smith')" title="Histórico">📊</button></td><td><a href="https://www.youtube.com/results?search_query=agachamento+smith+execução" target="_blank" class="yt-link">▶ VER</a></td></tr>
+<tr><td class="ex-name">Supino Reto</td><td class="ex-series">4</td><td class="ex-reps">8–10</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trA-ex2" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trA','ex2','Supino Reto')" title="Histórico">📊</button></td><td><a href="https://www.youtube.com/results?search_query=supino+reto+barra+execução" target="_blank" class="yt-link">▶ VER</a></td></tr>
+<tr><td class="ex-name">Puxada Aberta (Pull Down)</td><td class="ex-series">4</td><td class="ex-reps">10–12</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trA-ex3" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trA','ex3','Puxada Aberta (Pull Down)')" title="Histórico">📊</button></td><td><a href="https://www.youtube.com/results?search_query=pulldown+puxada+aberta+execução" target="_blank" class="yt-link">▶ VER</a></td></tr>
+<tr><td class="ex-name">Cadeira Flexora</td><td class="ex-series">3</td><td class="ex-reps">10–12</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trA-ex4" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trA','ex4','Cadeira Flexora')" title="Histórico">📊</button></td><td><a href="https://drive.google.com/file/d/1sirxKDE_YlDKDSROYD3d83raodQW-2TD/view" target="_blank" class="yt-link">▶ VER</a></td></tr>
+<tr><td class="ex-name">Remada Neutra Máquina</td><td class="ex-series">3</td><td class="ex-reps">10–12</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trA-ex5" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trA','ex5','Remada Neutra Máquina')" title="Histórico">📊</button></td><td><a href="https://drive.google.com/file/d/1rLG1qgkC6VZ2HagpOtIKzskzaKsWG977/view" target="_blank" class="yt-link">▶ VER</a></td></tr>
+<tr><td class="ex-name">Desenvolvimento Sentado com Halteres</td><td class="ex-series">3</td><td class="ex-reps">10–12</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trA-ex6" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trA','ex6','Desenvolvimento Sentado com Halteres')" title="Histórico">📊</button></td><td><a href="https://drive.google.com/file/d/1ubs5rubVoOPVhmuB3bUeCg5NwlS-iLY-/view" target="_blank" class="yt-link">▶ VER</a></td></tr>
+<tr><td class="ex-name">Rosca Direta na Polia com Barra W</td><td class="ex-series">3</td><td class="ex-reps">12–15</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trA-ex7" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trA','ex7','Rosca Direta na Polia com Barra W')" title="Histórico">📊</button></td><td><a href="https://www.youtube.com/results?search_query=rosca+direta+polia+barra+w+execução" target="_blank" class="yt-link">▶ VER</a></td></tr>
+<tr><td class="ex-name">Tríceps Corda</td><td class="ex-series">3</td><td class="ex-reps">12–15</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trA-ex8" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trA','ex8','Tríceps Corda')" title="Histórico">📊</button></td><td><a href="https://www.youtube.com/results?search_query=tríceps+corda+polia+execução" target="_blank" class="yt-link">▶ VER</a></td></tr>
+<tr style="background:rgba(201,168,76,0.04);"><td class="ex-name" style="color:var(--gold-light);font-style:italic;">⬡ CORE — Prancha Isométrica</td><td class="ex-series">3</td><td class="ex-reps">30–45s</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trA-ex9" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trA','ex9','Prancha Isométrica')" title="Histórico">📊</button></td><td><a href="https://www.youtube.com/results?search_query=prancha+isométrica+execução" target="_blank" class="yt-link">▶ VER</a></td></tr>
+<tr style="background:rgba(201,168,76,0.04);"><td class="ex-name" style="color:var(--gold-light);font-style:italic;">⬡ CORE — Abdominal Supra no Solo</td><td class="ex-series">3</td><td class="ex-reps">15–20</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trA-ex10" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trA','ex10','Abdominal Supra no Solo')" title="Histórico">📊</button></td><td><a href="https://www.youtube.com/results?search_query=abdominal+supra+solo+execução" target="_blank" class="yt-link">▶ VER</a></td></tr></tbody></table><div class="swipe-hint">← deslize →</div></div>
+</div>
+<div id="treino-B" class="treino-content ">
+  <div class="treino-header">
+    <div><div class="treino-title">Full Body B</div></div>
+    <div class="treino-day">🔥 Ter / Sex</div>
   </div>
-  <div id="treino-fc" class="treino-content">
-    <div class="meal-card">
-      <h3>Full Body C</h3>
-      <div class="exercise-table-wrap"><table class="exercise-table">
-        <thead><tr><th>Exercício</th><th>Séries</th><th>Reps</th><th>Carga</th><th>Vídeo</th></tr></thead>
-        <tbody>
-          <tr><td class="ex-name">Levantamento Terra Barra Hexagonal</td><td>4</td><td>6–8</td><td>Progressiva</td><td><a href="https://www.youtube.com/results?search_query=levantamento+terra+barra+hexagonal+execucao" target="_blank" class="video-btn">▶ VER</a></td></tr>
-          <tr><td class="ex-name">Supino Reto com Halteres</td><td>4</td><td>8–10</td><td>Progressiva</td><td><a href="https://www.youtube.com/results?search_query=supino+reto+halteres+execucao" target="_blank" class="video-btn">▶ VER</a></td></tr>
-          <tr><td class="ex-name">Puxada Fechada</td><td>4</td><td>8–10</td><td>Progressiva</td><td><a href="https://www.youtube.com/results?search_query=puxada+fechada+execucao" target="_blank" class="video-btn">▶ VER</a></td></tr>
-          <tr><td class="ex-name">Remada Máquina Pronada</td><td>3</td><td>10–12</td><td>Moderada</td><td><a href="https://drive.google.com/file/d/1wjWL1mL1en5VbYKNqAnfyw0L29NVQWNE/view?usp=sharing" target="_blank" class="video-btn">▶ VER</a></td></tr>
-          <tr><td class="ex-name">Cadeira Flexora</td><td>3</td><td>10–12</td><td>Moderada</td><td><a href="https://drive.google.com/file/d/1sirxKDE_YlDKDSROYD3d83raodQW-2TD/view?usp=sharing" target="_blank" class="video-btn">▶ VER</a></td></tr>
-          <tr><td class="ex-name">Desenvolvimento em Pé com Halteres</td><td>3</td><td>10–12</td><td>Moderada</td><td><a href="https://drive.google.com/file/d/1xoXg9D_HYvAcyw1_Y7T0_O-xtKkGqE-0/view?usp=sharing" target="_blank" class="video-btn">▶ VER</a></td></tr>
-          <tr><td class="ex-name">Rosca Martelo</td><td>3</td><td>10–12</td><td>Moderada</td><td><a href="https://www.youtube.com/results?search_query=rosca+martelo+execucao" target="_blank" class="video-btn">▶ VER</a></td></tr>
-          <tr><td class="ex-name">Tríceps Testa com Halteres</td><td>3</td><td>10–12</td><td>Moderada</td><td><a href="https://www.youtube.com/results?search_query=triceps+testa+halteres+execucao" target="_blank" class="video-btn">▶ VER</a></td></tr>
-          <tr style="background:rgba(201,168,76,0.03);"><td class="ex-name" style="color:var(--gold-light);font-style:italic;">— CORE —</td><td colspan="4" style="color:var(--white-dim);font-size:10px;font-style:italic;">Ao final</td></tr>
-          <tr><td class="ex-name">Abdominal Máquina</td><td>3</td><td>12–15</td><td>Moderada</td><td><a href="https://www.youtube.com/results?search_query=abdominal+maquina+execucao" target="_blank" class="video-btn">▶ VER</a></td></tr>
-          <tr><td class="ex-name">Prancha Isométrica</td><td>3</td><td>30–45s</td><td>Corporal</td><td><a href="https://www.youtube.com/results?search_query=prancha+isometrica+execucao" target="_blank" class="video-btn">▶ VER</a></td></tr>
-        </tbody>
-      </table></div>
-      <div class="swipe-hint">← deslize →</div>
-    </div>
+  <div class="meal-card"><table class="exercise-table"><thead><tr><th>Exercício</th><th>Séries</th><th>Reps</th><th>Carga</th><th>Vídeo</th></tr></thead><tbody><tr><td class="ex-name">Leg Horizontal</td><td class="ex-series">4</td><td class="ex-reps">10–12</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trB-ex1" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trB','ex1','Leg Horizontal')" title="Histórico">📊</button></td><td><a href="https://drive.google.com/file/d/1xBoO6qds5YoocHs2cMK6DDOwDAWGzTcZ/view" target="_blank" class="yt-link">▶ VER</a></td></tr>
+<tr><td class="ex-name">Supino Inclinado com Halteres</td><td class="ex-series">4</td><td class="ex-reps">8–10</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trB-ex2" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trB','ex2','Supino Inclinado com Halteres')" title="Histórico">📊</button></td><td><a href="https://www.youtube.com/results?search_query=supino+inclinado+halteres+execução" target="_blank" class="yt-link">▶ VER</a></td></tr>
+<tr><td class="ex-name">Pull Down Barra Reta</td><td class="ex-series">4</td><td class="ex-reps">10–12</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trB-ex3" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trB','ex3','Pull Down Barra Reta')" title="Histórico">📊</button></td><td><a href="https://www.youtube.com/results?search_query=pulldown+barra+reta+execução" target="_blank" class="yt-link">▶ VER</a></td></tr>
+<tr><td class="ex-name">Subida no Caixote</td><td class="ex-series">3</td><td class="ex-reps">12 cada</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trB-ex4" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trB','ex4','Subida no Caixote')" title="Histórico">📊</button></td><td><a href="https://www.youtube.com/results?search_query=subida+no+caixote+exercício" target="_blank" class="yt-link">▶ VER</a></td></tr>
+<tr><td class="ex-name">Remada Baixa Triângulo</td><td class="ex-series">3</td><td class="ex-reps">10–12</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trB-ex5" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trB','ex5','Remada Baixa Triângulo')" title="Histórico">📊</button></td><td><a href="https://drive.google.com/file/d/1WNx2rRvalmy14mbM5j4mBa3rjkRt701E/view" target="_blank" class="yt-link">▶ VER</a></td></tr>
+<tr><td class="ex-name">Elevação Lateral</td><td class="ex-series">4</td><td class="ex-reps">12–15</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trB-ex6" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trB','ex6','Elevação Lateral')" title="Histórico">📊</button></td><td><a href="https://www.youtube.com/results?search_query=elevação+lateral+halteres+execução" target="_blank" class="yt-link">▶ VER</a></td></tr>
+<tr><td class="ex-name">Crucifixo Invertido com Halteres</td><td class="ex-series">3</td><td class="ex-reps">12–15</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trB-ex7" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trB','ex7','Crucifixo Invertido com Halteres')" title="Histórico">📊</button></td><td><a href="https://www.youtube.com/results?search_query=crucifixo+invertido+halteres+execução" target="_blank" class="yt-link">▶ VER</a></td></tr>
+<tr style="background:rgba(201,168,76,0.04);"><td class="ex-name" style="color:var(--gold-light);font-style:italic;">⬡ CORE — Abdominal Remador</td><td class="ex-series">3</td><td class="ex-reps">12–15</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trB-ex8" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trB','ex8','Abdominal Remador')" title="Histórico">📊</button></td><td><a href="https://www.youtube.com/results?search_query=abdominal+remador+execução" target="_blank" class="yt-link">▶ VER</a></td></tr>
+<tr style="background:rgba(201,168,76,0.04);"><td class="ex-name" style="color:var(--gold-light);font-style:italic;">⬡ CORE — Abdominal Supra no Solo</td><td class="ex-series">3</td><td class="ex-reps">15–20</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trB-ex9" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trB','ex9','Abdominal Supra no Solo')" title="Histórico">📊</button></td><td><a href="https://www.youtube.com/results?search_query=abdominal+supra+solo+execução" target="_blank" class="yt-link">▶ VER</a></td></tr></tbody></table><div class="swipe-hint">← deslize →</div></div>
+</div>
+<div id="treino-C" class="treino-content ">
+  <div class="treino-header">
+    <div><div class="treino-title">Full Body C</div></div>
+    <div class="treino-day">⚡ Qua / Sáb</div>
   </div>
+  <div class="meal-card"><table class="exercise-table"><thead><tr><th>Exercício</th><th>Séries</th><th>Reps</th><th>Carga</th><th>Vídeo</th></tr></thead><tbody><tr><td class="ex-name">Levantamento Terra com Barra Reta</td><td class="ex-series">4</td><td class="ex-reps">6–8</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trC-ex1" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trC','ex1','Levantamento Terra com Barra Reta')" title="Histórico">📊</button></td><td><a href="https://drive.google.com/file/d/1oLer2VnjyQBytboW9FM0-xUIM40YC-7E/view" target="_blank" class="yt-link">▶ VER</a></td></tr>
+<tr><td class="ex-name">Supino Reto com Halteres</td><td class="ex-series">4</td><td class="ex-reps">8–10</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trC-ex2" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trC','ex2','Supino Reto com Halteres')" title="Histórico">📊</button></td><td><a href="https://www.youtube.com/results?search_query=supino+reto+halteres+execução" target="_blank" class="yt-link">▶ VER</a></td></tr>
+<tr><td class="ex-name">Puxada Fechada</td><td class="ex-series">4</td><td class="ex-reps">8–10</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trC-ex3" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trC','ex3','Puxada Fechada')" title="Histórico">📊</button></td><td><a href="https://www.youtube.com/results?search_query=puxada+fechada+execução" target="_blank" class="yt-link">▶ VER</a></td></tr>
+<tr><td class="ex-name">Cadeira Flexora</td><td class="ex-series">3</td><td class="ex-reps">10–12</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trC-ex4" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trC','ex4','Cadeira Flexora')" title="Histórico">📊</button></td><td><a href="https://drive.google.com/file/d/1sirxKDE_YlDKDSROYD3d83raodQW-2TD/view" target="_blank" class="yt-link">▶ VER</a></td></tr>
+<tr><td class="ex-name">Remada na Polia Alta com Corda</td><td class="ex-series">3</td><td class="ex-reps">10–12</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trC-ex5" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trC','ex5','Remada na Polia Alta com Corda')" title="Histórico">📊</button></td><td><a href="https://drive.google.com/file/d/1rlBFPmXWXpNIO2ihIm4lWiWO_RqiJAlI/view" target="_blank" class="yt-link">▶ VER</a></td></tr>
+<tr><td class="ex-name">Desenvolvimento em Pé com Halteres</td><td class="ex-series">3</td><td class="ex-reps">10–12</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trC-ex6" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trC','ex6','Desenvolvimento em Pé com Halteres')" title="Histórico">📊</button></td><td><a href="https://drive.google.com/file/d/1ubs5rubVoOPVhmuB3bUeCg5NwlS-iLY-/view" target="_blank" class="yt-link">▶ VER</a></td></tr>
+<tr><td class="ex-name">Rosca Martelo com Halteres</td><td class="ex-series">3</td><td class="ex-reps">10–12</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trC-ex7" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trC','ex7','Rosca Martelo com Halteres')" title="Histórico">📊</button></td><td><a href="https://www.youtube.com/results?search_query=rosca+martelo+halteres+execução" target="_blank" class="yt-link">▶ VER</a></td></tr>
+<tr><td class="ex-name">Tríceps Testa com Halteres</td><td class="ex-series">3</td><td class="ex-reps">10–12</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trC-ex8" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trC','ex8','Tríceps Testa com Halteres')" title="Histórico">📊</button></td><td><a href="https://www.youtube.com/results?search_query=tríceps+testa+halteres+execução" target="_blank" class="yt-link">▶ VER</a></td></tr>
+<tr style="background:rgba(201,168,76,0.04);"><td class="ex-name" style="color:var(--gold-light);font-style:italic;">⬡ CORE — Prancha Isométrica</td><td class="ex-series">3</td><td class="ex-reps">30–45s</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trC-ex9" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trC','ex9','Prancha Isométrica')" title="Histórico">📊</button></td><td><a href="https://www.youtube.com/results?search_query=prancha+isométrica+execução" target="_blank" class="yt-link">▶ VER</a></td></tr></tbody></table><div class="swipe-hint">← deslize →</div></div>
+</div>
+
 </section>
 
 <section id="cardio" class="section">
@@ -795,8 +753,6 @@ Suporte: segunda a sexta, 8h às 18h. 💬</div>
     <div class="cardio-day"><div class="cardio-day-title">🏃 Sessão 5 <span class="zone-pill z3">Z3</span></div><div class="cardio-day-body">30 min · 5 min Z2 / 20 min Z3 / 5 min Z2</div></div>
     <div class="cardio-day"><div class="cardio-day-title">🕐 Sessão 6 — 60 min <span class="zone-pill z3">Z2–Z3</span></div><div class="cardio-day-body">60 min · 8 min corrida / 2 min caminhada · Repetir</div></div>
   </div>
-</section></div>
-
 </section>
 
 <section id="conscientizacao" class="section">
@@ -1545,7 +1501,22 @@ function showSection(id){
   }
   window.scrollTo(0,0);
 }
+function showTreino(id, btn){
+  document.querySelectorAll('.treino-content').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.treino-tab').forEach(t=>t.classList.remove('active'));
+  const el = document.getElementById('treino-'+id);
+  if(el) el.classList.add('active');
+  if(btn) btn.classList.add('active');
+}
 
+function showSemana(id, btn){
+  const section = btn.closest('section') || document;
+  section.querySelectorAll('.semana-tab').forEach(t=>t.classList.remove('active'));
+  section.querySelectorAll('.semana-content').forEach(c=>c.classList.remove('active'));
+  const el = document.getElementById(id);
+  if(el) el.classList.add('active');
+  if(btn) btn.classList.add('active');
+}
 
 // ── TEMA ──
 function toggleTheme() {
@@ -1894,7 +1865,7 @@ ${obsGeral}
 `;
   txt += `
 ━━━━━━━━━━━━━━━━━━━━━━━
-Enviado via Portal Consultoria LB — José Ferreira de Azevedo Neto`;
+Enviado via Portal Consultoria LB — Fulano de Tal`;
   document.getElementById('fb-result-text').textContent = txt;
   document.getElementById('fb-result').classList.add('show');
   document.getElementById('fb-result').scrollIntoView({behavior:'smooth'});
@@ -2066,7 +2037,7 @@ ${get('an-obs')}
 `;
   txt += `
 ━━━━━━━━━━━━━━━━━━━━━━━
-Enviado via Portal Consultoria LB — José Ferreira de Azevedo Neto`;
+Enviado via Portal Consultoria LB — Fulano de Tal`;
   document.getElementById('an-result-text').textContent = txt;
   document.getElementById('an-result').classList.add('show');
   document.getElementById('an-result').scrollIntoView({behavior:'smooth'});
@@ -2153,13 +2124,13 @@ function qEnviarWhatsapp() {
     '*💬 OBSERVAÇÕES*',
     d.obs_finais||'—'
   ].join('\n');
-  window.open('https://wa.me/5527995084354?text='+encodeURIComponent(txt),'_blank');
+  window.open('https://wa.me/5527999999999?text='+encodeURIComponent(txt),'_blank');
 }
 
 
-// Pre-fill questionario for José Ferreira de Azevedo Neto demo
+// Pre-fill questionario for Fulano de Tal demo
 window.addEventListener('load', function() {
-  // Simulate filled form for José Ferreira de Azevedo Neto
+  // Simulate filled form for Fulano de Tal
   const preSelections = {
     'trabalho': 'Sentado (escritório)',
     'objetivo': 'Perder gordura',
@@ -2220,31 +2191,6 @@ window.addEventListener('load', function() {
 
 function toggleAlt(btn){const c=btn.nextElementSibling;if(c.style.display==="none"){c.style.display="inline";btn.textContent="←";}else{c.style.display="none";btn.textContent="→";}}
 
-
-const CLIENT_ID = 'jose-neto';
-
-
-// ── TREINO SUB-TABS ───────────────────────────────────────────
-function showTreino(id, btn){
-  document.querySelectorAll('.treino-content').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.treino-tab').forEach(t=>t.classList.remove('active'));
-  const el = document.getElementById('treino-'+id);
-  if(el) el.classList.add('active');
-  if(btn) btn.classList.add('active');
-}
-
-// ── SEMANA TABS (CARDIO) ──────────────────────────────────────
-function showSemana(id, btn){
-  const container = btn.closest('.semana-tabs-wrapper') || document;
-  const allTabs = container.querySelectorAll ? container.querySelectorAll('.semana-tab') : document.querySelectorAll('.semana-tab');
-  const allContent = container.querySelectorAll ? container.querySelectorAll('.semana-content') : document.querySelectorAll('.semana-content');
-  allTabs.forEach(t=>t.classList.remove('active'));
-  allContent.forEach(c=>c.classList.remove('active'));
-  const el = document.getElementById(id);
-  if(el) el.classList.add('active');
-  if(btn) btn.classList.add('active');
-}
-
 </script>
 
 <script type="module">
@@ -2304,22 +2250,22 @@ function showSemana(id, btn){
       el.innerHTML = `
         ${dl!==null&&dl<=14?'<div style="background:rgba(224,90,90,0.15);border:1px solid rgba(224,90,90,0.4);border-radius:6px;padding:14px;margin-bottom:20px;font-size:12px;color:#e05a5a;">⚠️ Plano vence em breve!</div>':''}
         <div style="text-align:center;padding:32px;background:var(--dark2);border:1px solid var(--border);border-radius:8px;margin-bottom:20px;">
-          <div style="font-size:72px;font-weight:700;color:${col};line-height:1;">${dl!==null?dl:'—'}</div>
-          <div style="font-size:11px;color:var(--white-dim);margin-top:6px;letter-spacing:1px;">DIAS RESTANTES ${em}</div>
+          <div style="font-size:72px;font-weight:700;color:\${col};line-height:1;">\${dl!==null?dl:'—'}</div>
+          <div style="font-size:11px;color:var(--white-dim);margin-top:6px;letter-spacing:1px;">DIAS RESTANTES \${em}</div>
         </div>
         <div style="background:var(--dark2);border:1px solid var(--border);border-radius:8px;padding:22px;margin-bottom:16px;">
           <div style="font-size:11px;color:var(--white-dim);margin-bottom:10px;">PROGRESSO DO PLANO</div>
           <div style="height:8px;background:rgba(255,255,255,0.07);border-radius:4px;overflow:hidden;margin-bottom:8px;">
-            <div style="height:100%;width:${pp}%;background:linear-gradient(90deg,var(--gold),#e2c06e);border-radius:4px;"></div>
+            <div style="height:100%;width:\${pp}%;background:linear-gradient(90deg,var(--gold),#e2c06e);border-radius:4px;"></div>
           </div>
           <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--white-dim);">
-            <span>Início: ${pu||'—'}</span><span>Renovação: ${rd||'—'}</span>
+            <span>Início: \${pu||'—'}</span><span>Renovação: \${rd||'—'}</span>
           </div>
         </div>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;">
-          <div style="background:var(--dark2);border:1px solid var(--border);border-radius:6px;padding:16px;text-align:center;"><div style="font-size:9px;color:var(--white-dim);margin-bottom:6px;">SEMANA</div><div style="font-size:22px;color:var(--gold);font-weight:600;">S${wk}</div></div>
-          <div style="background:var(--dark2);border:1px solid var(--border);border-radius:6px;padding:16px;text-align:center;"><div style="font-size:9px;color:var(--white-dim);margin-bottom:6px;">RENOVAÇÃO</div><div style="font-size:14px;color:var(--white);font-weight:500;">${rd||'—'}</div></div>
-          <div style="background:var(--dark2);border:1px solid var(--border);border-radius:6px;padding:16px;text-align:center;"><div style="font-size:9px;color:var(--white-dim);margin-bottom:6px;">VALOR</div><div style="font-size:18px;color:var(--gold);font-weight:600;">${rv?'R$ '+rv:'—'}</div></div>
+          <div style="background:var(--dark2);border:1px solid var(--border);border-radius:6px;padding:16px;text-align:center;"><div style="font-size:9px;color:var(--white-dim);margin-bottom:6px;">SEMANA</div><div style="font-size:22px;color:var(--gold);font-weight:600;">S\${wk}</div></div>
+          <div style="background:var(--dark2);border:1px solid var(--border);border-radius:6px;padding:16px;text-align:center;"><div style="font-size:9px;color:var(--white-dim);margin-bottom:6px;">RENOVAÇÃO</div><div style="font-size:14px;color:var(--white);font-weight:500;">\${rd||'—'}</div></div>
+          <div style="background:var(--dark2);border:1px solid var(--border);border-radius:6px;padding:16px;text-align:center;"><div style="font-size:9px;color:var(--white-dim);margin-bottom:6px;">VALOR</div><div style="font-size:18px;color:var(--gold);font-weight:600;">\${rv?'R$ '+rv:'—'}</div></div>
         </div>`;
     } catch(e) {
       el.innerHTML = '<div style="text-align:center;padding:40px;color:var(--white-dim);">Configure as datas no Dashboard do Treinador.</div>';
