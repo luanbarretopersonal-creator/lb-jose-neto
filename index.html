@@ -464,17 +464,24 @@ textarea.q-input{resize:vertical;min-height:80px;}
 .semana-tab.active{color:var(--gold);border-color:var(--gold);background:var(--gold-dim);}
 
 
-/* ── NAV MOBILE ── */
+
 .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:nowrap;}
+.nav-brand{display:flex;align-items:center;gap:8px;padding:8px 0;flex-shrink:0;max-width:150px;}
 .nav-right{display:flex;align-items:center;gap:6px;flex:1;min-width:0;flex-wrap:nowrap;}
 .nav-tabs{display:flex;gap:3px;overflow-x:auto;-webkit-overflow-scrolling:touch;flex-wrap:nowrap;flex:1;min-width:0;padding:8px 0;scrollbar-width:none;}
 .nav-tabs::-webkit-scrollbar{display:none;}
 .tab-btn{white-space:nowrap;flex-shrink:0;min-height:40px;-webkit-tap-highlight-color:transparent;}
-@media(max-width:480px){.nav-title span{display:none;}.nav-brand{max-width:100px;}}
-/* ── TREINO TABS ── */
-.treino-content{display:none;}
-.treino-content.active{display:block;animation:fadeUp 0.4s ease;}
+.treino-content{display:none;} .treino-content.active{display:block;animation:fadeUp 0.4s ease;}
 .treino-tab.active{color:var(--gold);border-color:var(--gold);background:var(--gold-dim);}
+.dieta-panel{display:none;} .dieta-panel.active{display:block;animation:fadeUp 0.4s ease;}
+.dieta-tab-btn{background:var(--dark2);border:1px solid var(--border);color:var(--white-dim);font-family:'Montserrat',sans-serif;font-size:11px;padding:12px 20px;min-height:44px;cursor:pointer;border-radius:2px;transition:all 0.3s;white-space:nowrap;-webkit-tap-highlight-color:transparent;flex-shrink:0;line-height:1.3;}
+.dieta-tab-btn.active{color:var(--gold);border-color:var(--gold);background:var(--gold-dim);}
+.semana-tabs{display:flex;gap:6px;margin-bottom:20px;overflow-x:auto;-webkit-overflow-scrolling:touch;flex-wrap:nowrap;padding-bottom:4px;scrollbar-width:none;}
+.semana-tab{flex-shrink:0;background:var(--dark2);border:1px solid var(--border);color:var(--white-dim);font-family:'Montserrat',sans-serif;font-size:10px;padding:11px 14px;min-height:40px;cursor:pointer;border-radius:2px;transition:all 0.3s;white-space:nowrap;-webkit-tap-highlight-color:transparent;}
+.semana-tab.active{color:var(--gold);border-color:var(--gold);background:var(--gold-dim);}
+.semana-content{display:none;} .semana-content.active{display:block;}
+@media(max-width:480px){.nav-title span{display:none;}.nav-brand{max-width:100px;}}
+
 </style>
 </head>
 <body>
@@ -501,9 +508,7 @@ textarea.q-input{resize:vertical;min-height:80px;}
     </div>
   </div>
 </nav>
-
 <div class="main">
-
 <section id="apresentacao" class="section active">
   <div class="client-hero">
     <div class="hero-bg"></div><div class="hero-overlay"></div>
@@ -555,7 +560,6 @@ Suporte: segunda a sexta, 8h às 18h. 💬</div>
     </div>
   </div>
 </section>
-
 <section id="dieta" class="section">
   <div class="section-header"><h2>Planejamento <span>Alimentar</span></h2><div class="section-line"></div></div>
   <div class="sub-search-wrap"><h4>🔍 Busca rápida de substitutos</h4><input class="sub-search-input" type="text" id="subSearch" placeholder="Digite o alimento..." oninput="searchSubs()"><div id="sub-results"></div></div>
@@ -612,7 +616,6 @@ Suporte: segunda a sexta, 8h às 18h. 💬</div>
   </div>
 
 </section>
-
 <section id="treino" class="section">
   <div class="section-header"><h2>Planejamento de <span>Treino</span></h2><div class="section-line"></div></div>
   <div style="background:rgba(201,168,76,0.06);border:1px solid var(--border);border-radius:4px;padding:12px 16px;margin-bottom:18px;font-size:11px;color:var(--white-dim);line-height:1.9;">
@@ -632,11 +635,11 @@ Suporte: segunda a sexta, 8h às 18h. 💬</div>
   </div>
   <div class="meal-card"><table class="exercise-table"><thead><tr><th>Exercício</th><th>Séries</th><th>Reps</th><th>Carga</th><th>Vídeo</th></tr></thead><tbody><tr><td class="ex-name">Agachamento Smith</td><td class="ex-series">4</td><td class="ex-reps">8–10</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trA-ex1" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trA','ex1','Agachamento Smith')" title="Histórico">📊</button></td><td><a href="https://drive.google.com/file/d/1QNsyxSR4JfRpctAhTilG8MnEc5slXWqw/view" target="_blank" class="yt-link">▶ VER</a></td></tr>
 <tr><td class="ex-name">Supino Reto</td><td class="ex-series">4</td><td class="ex-reps">8–10</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trA-ex2" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trA','ex2','Supino Reto')" title="Histórico">📊</button></td><td><a href="https://drive.google.com/file/d/1NNitpyCalxSlVztdtECewEerae3BI7q3/view" target="_blank" class="yt-link">▶ VER</a></td></tr>
-<tr><td class="ex-name">Puxada Aberta (Pull Down)</td><td class="ex-series">4</td><td class="ex-reps">10–12</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trA-ex3" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trA','ex3','Puxada Aberta (Pull Down)')" title="Histórico">📊</button></td><td><a href="https://drive.google.com/file/d/1hO72jTUD-c47MI6Y5Vyfh8st7pbtu2FI/view" target="_blank" class="yt-link">▶ VER</a></td></tr>
+<tr><td class="ex-name">Puxada Aberta (Pull Down)</td><td class="ex-series">4</td><td class="ex-reps">10–12</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trA-ex3" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trA','ex3','Puxada Aberta (Pull Down)')" title="Histórico">📊</button></td><td><a href="https://www.youtube.com/results?search_query=Puxada+Aberta+(Pull+Down)+execução" target="_blank" class="yt-link">▶ VER</a></td></tr>
 <tr><td class="ex-name">Cadeira Flexora</td><td class="ex-series">3</td><td class="ex-reps">10–12</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trA-ex4" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trA','ex4','Cadeira Flexora')" title="Histórico">📊</button></td><td><a href="https://drive.google.com/file/d/1sirxKDE_YlDKDSROYD3d83raodQW-2TD/view" target="_blank" class="yt-link">▶ VER</a></td></tr>
-<tr><td class="ex-name">Remada Neutra Máquina</td><td class="ex-series">3</td><td class="ex-reps">10–12</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trA-ex5" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trA','ex5','Remada Neutra Máquina')" title="Histórico">📊</button></td><td><a href="https://drive.google.com/file/d/1CZGhNpGRAJmBvT9y_feZyzc7kc0VsopW/view" target="_blank" class="yt-link">▶ VER</a></td></tr>
+<tr><td class="ex-name">Remada Neutra Máquina</td><td class="ex-series">3</td><td class="ex-reps">10–12</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trA-ex5" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trA','ex5','Remada Neutra Máquina')" title="Histórico">📊</button></td><td><a href="https://www.youtube.com/results?search_query=Remada+Neutra+Máquina+execução" target="_blank" class="yt-link">▶ VER</a></td></tr>
 <tr><td class="ex-name">Desenvolvimento Sentado com Halteres</td><td class="ex-series">3</td><td class="ex-reps">10–12</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trA-ex6" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trA','ex6','Desenvolvimento Sentado com Halteres')" title="Histórico">📊</button></td><td><a href="https://drive.google.com/file/d/1od8U4dsUyufbcKSqLUcwN0xcSLHnvhK3/view" target="_blank" class="yt-link">▶ VER</a></td></tr>
-<tr><td class="ex-name">Rosca Direta na Polia com Barra W</td><td class="ex-series">3</td><td class="ex-reps">12–15</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trA-ex7" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trA','ex7','Rosca Direta na Polia com Barra W')" title="Histórico">📊</button></td><td><a href="https://www.youtube.com/results?search_query=rosca+direta+polia+barra+w+execução" target="_blank" class="yt-link">▶ VER</a></td></tr>
+<tr><td class="ex-name">Rosca Direta na Polia com Barra W</td><td class="ex-series">3</td><td class="ex-reps">12–15</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trA-ex7" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trA','ex7','Rosca Direta na Polia com Barra W')" title="Histórico">📊</button></td><td><a href="https://www.youtube.com/results?search_query=Rosca+Direta+na+Polia+com+Barra+W+execução" target="_blank" class="yt-link">▶ VER</a></td></tr>
 <tr><td class="ex-name">Tríceps Corda</td><td class="ex-series">3</td><td class="ex-reps">12–15</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trA-ex8" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trA','ex8','Tríceps Corda')" title="Histórico">📊</button></td><td><a href="https://drive.google.com/file/d/1p_Ec7GnQK8wgOTAvbXb0VIhjtm7QMNXV/view" target="_blank" class="yt-link">▶ VER</a></td></tr>
 <tr style="background:rgba(201,168,76,0.04);"><td class="ex-name" style="color:var(--gold-light);font-style:italic;">⬡ CORE — Prancha Isométrica</td><td class="ex-series">3</td><td class="ex-reps">30–45s</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trA-ex9" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trA','ex9','Prancha Isométrica')" title="Histórico">📊</button></td><td><a href="https://www.youtube.com/results?search_query=prancha+isométrica+execução" target="_blank" class="yt-link">▶ VER</a></td></tr>
 <tr style="background:rgba(201,168,76,0.04);"><td class="ex-name" style="color:var(--gold-light);font-style:italic;">⬡ CORE — Abdominal Supra no Solo</td><td class="ex-series">3</td><td class="ex-reps">15–20</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trA-ex10" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trA','ex10','Abdominal Supra no Solo')" title="Histórico">📊</button></td><td><a href="https://www.youtube.com/results?search_query=abdominal+supra+solo+execução" target="_blank" class="yt-link">▶ VER</a></td></tr></tbody></table><div class="swipe-hint">← deslize →</div></div>
@@ -648,11 +651,11 @@ Suporte: segunda a sexta, 8h às 18h. 💬</div>
   </div>
   <div class="meal-card"><table class="exercise-table"><thead><tr><th>Exercício</th><th>Séries</th><th>Reps</th><th>Carga</th><th>Vídeo</th></tr></thead><tbody><tr><td class="ex-name">Leg Horizontal</td><td class="ex-series">4</td><td class="ex-reps">10–12</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trB-ex1" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trB','ex1','Leg Horizontal')" title="Histórico">📊</button></td><td><a href="https://drive.google.com/file/d/1xBoO6qds5YoocHs2cMK6DDOwDAWGzTcZ/view" target="_blank" class="yt-link">▶ VER</a></td></tr>
 <tr><td class="ex-name">Supino Inclinado com Halteres</td><td class="ex-series">4</td><td class="ex-reps">8–10</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trB-ex2" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trB','ex2','Supino Inclinado com Halteres')" title="Histórico">📊</button></td><td><a href="https://drive.google.com/file/d/1W-MZsADzV86Da2cYnmw_P3PTOkXz7kaQ/view" target="_blank" class="yt-link">▶ VER</a></td></tr>
-<tr><td class="ex-name">Pull Down Barra Reta</td><td class="ex-series">4</td><td class="ex-reps">10–12</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trB-ex3" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trB','ex3','Pull Down Barra Reta')" title="Histórico">📊</button></td><td><a href="https://www.youtube.com/results?search_query=pulldown+barra+reta+execução" target="_blank" class="yt-link">▶ VER</a></td></tr>
+<tr><td class="ex-name">Pull Down Barra Reta</td><td class="ex-series">4</td><td class="ex-reps">10–12</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trB-ex3" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trB','ex3','Pull Down Barra Reta')" title="Histórico">📊</button></td><td><a href="https://www.youtube.com/results?search_query=Pull+Down+Barra+Reta+execução" target="_blank" class="yt-link">▶ VER</a></td></tr>
 <tr><td class="ex-name">Subida no Caixote</td><td class="ex-series">3</td><td class="ex-reps">12 cada</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trB-ex4" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trB','ex4','Subida no Caixote')" title="Histórico">📊</button></td><td><a href="https://drive.google.com/file/d/1S5X-RNSaiMua1BZXfQ6eLN6D-Cuu7QlH/view" target="_blank" class="yt-link">▶ VER</a></td></tr>
 <tr><td class="ex-name">Remada Baixa Triângulo</td><td class="ex-series">3</td><td class="ex-reps">10–12</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trB-ex5" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trB','ex5','Remada Baixa Triângulo')" title="Histórico">📊</button></td><td><a href="https://drive.google.com/file/d/1WNx2rRvalmy14mbM5j4mBa3rjkRt701E/view" target="_blank" class="yt-link">▶ VER</a></td></tr>
-<tr><td class="ex-name">Elevação Lateral</td><td class="ex-series">4</td><td class="ex-reps">12–15</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trB-ex6" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trB','ex6','Elevação Lateral')" title="Histórico">📊</button></td><td><a href="https://drive.google.com/file/d/1NGqW9xq7yFGUv_U_TnEDNtJg23aKEG3M/view" target="_blank" class="yt-link">▶ VER</a></td></tr>
-<tr><td class="ex-name">Crucifixo Invertido com Halteres</td><td class="ex-series">3</td><td class="ex-reps">12–15</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trB-ex7" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trB','ex7','Crucifixo Invertido com Halteres')" title="Histórico">📊</button></td><td><a href="https://drive.google.com/file/d/1NdJPRNzEE-HuijZs9z79V_lKlwoUmSVX/view" target="_blank" class="yt-link">▶ VER</a></td></tr>
+<tr><td class="ex-name">Elevação Lateral</td><td class="ex-series">4</td><td class="ex-reps">12–15</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trB-ex6" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trB','ex6','Elevação Lateral')" title="Histórico">📊</button></td><td><a href="https://www.youtube.com/results?search_query=Elevação+Lateral+execução" target="_blank" class="yt-link">▶ VER</a></td></tr>
+<tr><td class="ex-name">Crucifixo Invertido com Halteres</td><td class="ex-series">3</td><td class="ex-reps">12–15</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trB-ex7" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trB','ex7','Crucifixo Invertido com Halteres')" title="Histórico">📊</button></td><td><a href="https://www.youtube.com/results?search_query=Crucifixo+Invertido+com+Halteres+execução" target="_blank" class="yt-link">▶ VER</a></td></tr>
 <tr style="background:rgba(201,168,76,0.04);"><td class="ex-name" style="color:var(--gold-light);font-style:italic;">⬡ CORE — Abdominal Remador</td><td class="ex-series">3</td><td class="ex-reps">12–15</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trB-ex8" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trB','ex8','Abdominal Remador')" title="Histórico">📊</button></td><td><a href="https://www.youtube.com/results?search_query=abdominal+remador+execução" target="_blank" class="yt-link">▶ VER</a></td></tr>
 <tr style="background:rgba(201,168,76,0.04);"><td class="ex-name" style="color:var(--gold-light);font-style:italic;">⬡ CORE — Abdominal Supra no Solo</td><td class="ex-series">3</td><td class="ex-reps">15–20</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trB-ex9" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trB','ex9','Abdominal Supra no Solo')" title="Histórico">📊</button></td><td><a href="https://www.youtube.com/results?search_query=abdominal+supra+solo+execução" target="_blank" class="yt-link">▶ VER</a></td></tr></tbody></table><div class="swipe-hint">← deslize →</div></div>
 </div>
@@ -663,17 +666,16 @@ Suporte: segunda a sexta, 8h às 18h. 💬</div>
   </div>
   <div class="meal-card"><table class="exercise-table"><thead><tr><th>Exercício</th><th>Séries</th><th>Reps</th><th>Carga</th><th>Vídeo</th></tr></thead><tbody><tr><td class="ex-name">Levantamento Terra com Barra Reta</td><td class="ex-series">4</td><td class="ex-reps">6–8</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trC-ex1" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trC','ex1','Levantamento Terra com Barra Reta')" title="Histórico">📊</button></td><td><a href="https://drive.google.com/file/d/1oLer2VnjyQBytboW9FM0-xUIM40YC-7E/view" target="_blank" class="yt-link">▶ VER</a></td></tr>
 <tr><td class="ex-name">Supino Reto com Halteres</td><td class="ex-series">4</td><td class="ex-reps">8–10</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trC-ex2" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trC','ex2','Supino Reto com Halteres')" title="Histórico">📊</button></td><td><a href="https://drive.google.com/file/d/1tz6fRcmWpt1zNlNrZPPOIyT2qNkYEMTQ/view" target="_blank" class="yt-link">▶ VER</a></td></tr>
-<tr><td class="ex-name">Puxada Fechada</td><td class="ex-series">4</td><td class="ex-reps">8–10</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trC-ex3" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trC','ex3','Puxada Fechada')" title="Histórico">📊</button></td><td><a href="https://www.youtube.com/results?search_query=puxada+fechada+neutra+execução" target="_blank" class="yt-link">▶ VER</a></td></tr>
+<tr><td class="ex-name">Puxada Fechada</td><td class="ex-series">4</td><td class="ex-reps">8–10</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trC-ex3" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trC','ex3','Puxada Fechada')" title="Histórico">📊</button></td><td><a href="https://drive.google.com/file/d/1YrqZAR_gi0JnSNzY4fJKFtXzK2aLJKIZ/view" target="_blank" class="yt-link">▶ VER</a></td></tr>
 <tr><td class="ex-name">Cadeira Flexora</td><td class="ex-series">3</td><td class="ex-reps">10–12</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trC-ex4" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trC','ex4','Cadeira Flexora')" title="Histórico">📊</button></td><td><a href="https://drive.google.com/file/d/1sirxKDE_YlDKDSROYD3d83raodQW-2TD/view" target="_blank" class="yt-link">▶ VER</a></td></tr>
 <tr><td class="ex-name">Remada na Polia Alta com Corda</td><td class="ex-series">3</td><td class="ex-reps">10–12</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trC-ex5" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trC','ex5','Remada na Polia Alta com Corda')" title="Histórico">📊</button></td><td><a href="https://drive.google.com/file/d/1rlBFPmXWXpNIO2ihIm4lWiWO_RqiJAlI/view" target="_blank" class="yt-link">▶ VER</a></td></tr>
-<tr><td class="ex-name">Desenvolvimento em Pé com Halteres</td><td class="ex-series">3</td><td class="ex-reps">10–12</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trC-ex6" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trC','ex6','Desenvolvimento em Pé com Halteres')" title="Histórico">📊</button></td><td><a href="https://drive.google.com/file/d/1xoXg9D_HYvAcyw1_Y7T0_O-xtKkGqE-0/view" target="_blank" class="yt-link">▶ VER</a></td></tr>
+<tr><td class="ex-name">Desenvolvimento em Pé com Halteres</td><td class="ex-series">3</td><td class="ex-reps">10–12</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trC-ex6" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trC','ex6','Desenvolvimento em Pé com Halteres')" title="Histórico">📊</button></td><td><a href="https://drive.google.com/file/d/1ubs5rubVoOPVhmuB3bUeCg5NwlS-iLY-/view" target="_blank" class="yt-link">▶ VER</a></td></tr>
 <tr><td class="ex-name">Rosca Martelo com Halteres</td><td class="ex-series">3</td><td class="ex-reps">10–12</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trC-ex7" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trC','ex7','Rosca Martelo com Halteres')" title="Histórico">📊</button></td><td><a href="https://drive.google.com/file/d/1UU-_tq8q3zdmZBMChM3nnaJNOtqWeKD0/view" target="_blank" class="yt-link">▶ VER</a></td></tr>
 <tr><td class="ex-name">Tríceps Testa com Halteres</td><td class="ex-series">3</td><td class="ex-reps">10–12</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trC-ex8" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trC','ex8','Tríceps Testa com Halteres')" title="Histórico">📊</button></td><td><a href="https://drive.google.com/file/d/12K3lbgufN46Sj8zPK0JwZyctgigNxW8-/view" target="_blank" class="yt-link">▶ VER</a></td></tr>
 <tr style="background:rgba(201,168,76,0.04);"><td class="ex-name" style="color:var(--gold-light);font-style:italic;">⬡ CORE — Prancha Isométrica</td><td class="ex-series">3</td><td class="ex-reps">30–45s</td><td><input class="load-input" type="text" placeholder="kg" data-key="load-trC-ex9" onchange="saveLoad(this)"><button class="load-history-btn" onclick="showHist('trC','ex9','Prancha Isométrica')" title="Histórico">📊</button></td><td><a href="https://www.youtube.com/results?search_query=prancha+isométrica+execução" target="_blank" class="yt-link">▶ VER</a></td></tr></tbody></table><div class="swipe-hint">← deslize →</div></div>
 </div>
 
 </section>
-
 <section id="cardio" class="section">
 
   <div class="section-header"><h2>Protocolo de <span>Cardio</span></h2><div class="section-line"></div></div>
@@ -754,7 +756,6 @@ Suporte: segunda a sexta, 8h às 18h. 💬</div>
     <div class="cardio-day"><div class="cardio-day-title">🕐 Sessão 6 — 60 min <span class="zone-pill z3">Z2–Z3</span></div><div class="cardio-day-body">60 min · 8 min corrida / 2 min caminhada · Repetir</div></div>
   </div>
 </section>
-
 <section id="conscientizacao" class="section">
   <div class="section-header"><h2>Área de <span>Conscientização</span></h2><div class="section-line"></div></div>
   <p style="font-size:11px;color:var(--white-dim);margin-bottom:28px;line-height:1.8;">Dicas e conteúdos do seu treinador sobre nutrição, mentalidade, sono e saúde.</p>
@@ -776,7 +777,6 @@ Suporte: segunda a sexta, 8h às 18h. 💬</div>
     <div class="biblio-item"><div class="biblio-tag">🍺 O álcool inibe seu potencial</div><p>O álcool prejudica sono, recuperação muscular, função cognitiva, hormônios e composição corporal. É um dos maiores sabotadores do processo — especialmente nos fins de semana.</p><div style="margin-top:8px;"><a href="https://www.instagram.com/reel/DXxSy9SxBKT/" target="_blank" class="ig-link">▶ VER</a></div></div>
   </div>
 </section>
-
 <section id="evolucao" class="section">
   <div class="section-header"><h2>Histórico de <span>Evolução</span></h2><div class="section-line"></div></div>
 
@@ -829,7 +829,6 @@ Suporte: segunda a sexta, 8h às 18h. 💬</div>
   <div class="photo-grid" id="photoGrid"></div>
 
 </section>
-
 <section id="relatorio" class="section">
   <div class="section-header"><h2>Relatório <span>Personalizado</span></h2><div class="section-line"></div></div>
   <div style="background:linear-gradient(135deg,rgba(201,168,76,0.06),var(--dark2));border:1px solid var(--border);border-radius:4px;padding:22px 24px;margin-bottom:20px;">
@@ -886,7 +885,6 @@ Suporte: segunda a sexta, 8h às 18h. 💬</div>
     </div>
   </div>
 </section>
-
 <section id="feedback" class="section">
   <div class="section-header"><h2>Feedback <span>Semanal</span></h2><div class="section-line"></div></div>
 
@@ -1183,12 +1181,10 @@ Suporte: segunda a sexta, 8h às 18h. 💬</div>
   </div>
 
 </section>
-
 <section id="financeiro" class="section">
   <div class="section-header"><h2>💳 <span>Financeiro</span></h2><div class="section-line"></div></div>
   <div id="fin-container"><div style="text-align:center;padding:40px;color:var(--white-dim);">Carregando...</div></div>
 </section>
-
 <section id="z3" class="section">
   <div class="section-header"><h2>🛒 Z3 <span>Distribuidora</span></h2><div class="section-line"></div></div>
   <div style="background:linear-gradient(135deg,#1a1200,var(--dark2));border:1px solid var(--gold);border-radius:8px;padding:28px 24px;text-align:center;margin-bottom:28px;">
@@ -1222,13 +1218,9 @@ Suporte: segunda a sexta, 8h às 18h. 💬</div>
     </div>
   </div>
 </section>
-
 </div>
-
 <div class="watermark">Consultoria LB</div>
-
 <script>
-
 const VIDEO_LIB = {
   'supino reto': 'https://drive.google.com/file/d/1NNitpyCalxSlVztdtECewEerae3BI7q3/view?usp=drive_link',
   'supino reto com halteres': 'https://drive.google.com/file/d/1tz6fRcmWpt1zNlNrZPPOIyT2qNkYEMTQ/view?usp=drive_link',
@@ -1865,7 +1857,7 @@ ${obsGeral}
 `;
   txt += `
 ━━━━━━━━━━━━━━━━━━━━━━━
-Enviado via Portal Consultoria LB — Fulano de Tal`;
+Enviado via Portal Consultoria LB — José Neto`;
   document.getElementById('fb-result-text').textContent = txt;
   document.getElementById('fb-result').classList.add('show');
   document.getElementById('fb-result').scrollIntoView({behavior:'smooth'});
@@ -2037,7 +2029,7 @@ ${get('an-obs')}
 `;
   txt += `
 ━━━━━━━━━━━━━━━━━━━━━━━
-Enviado via Portal Consultoria LB — Fulano de Tal`;
+Enviado via Portal Consultoria LB — José Neto`;
   document.getElementById('an-result-text').textContent = txt;
   document.getElementById('an-result').classList.add('show');
   document.getElementById('an-result').scrollIntoView({behavior:'smooth'});
@@ -2124,13 +2116,13 @@ function qEnviarWhatsapp() {
     '*💬 OBSERVAÇÕES*',
     d.obs_finais||'—'
   ].join('\n');
-  window.open('https://wa.me/5527999999999?text='+encodeURIComponent(txt),'_blank');
+  window.open('https://wa.me/5527995084354?text='+encodeURIComponent(txt),'_blank');
 }
 
 
-// Pre-fill questionario for Fulano de Tal demo
+// Pre-fill questionario for José Neto demo
 window.addEventListener('load', function() {
-  // Simulate filled form for Fulano de Tal
+  // Simulate filled form for José Neto
   const preSelections = {
     'trabalho': 'Sentado (escritório)',
     'objetivo': 'Perder gordura',
@@ -2191,8 +2183,30 @@ window.addEventListener('load', function() {
 
 function toggleAlt(btn){const c=btn.nextElementSibling;if(c.style.display==="none"){c.style.display="inline";btn.textContent="←";}else{c.style.display="none";btn.textContent="→";}}
 
-</script>
 
+function showTreino(id,btn){
+  document.querySelectorAll('.treino-content').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.treino-tab').forEach(t=>t.classList.remove('active'));
+  const el=document.getElementById('treino-'+id);
+  if(el)el.classList.add('active');
+  if(btn)btn.classList.add('active');
+}
+function showDieta(id,btn){
+  document.querySelectorAll('.dieta-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.dieta-tab-btn').forEach(t=>t.classList.remove('active'));
+  const el=document.getElementById(id);
+  if(el)el.classList.add('active');
+  if(btn)btn.classList.add('active');
+}
+function showSemana(id,btn){
+  const section=btn.closest('section')||document;
+  section.querySelectorAll('.semana-tab').forEach(t=>t.classList.remove('active'));
+  section.querySelectorAll('.semana-content').forEach(c=>c.classList.remove('active'));
+  const el=document.getElementById(id);
+  if(el)el.classList.add('active');
+  if(btn)btn.classList.add('active');
+}
+</script>
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
   import { getFirestore, doc, setDoc, getDoc, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
@@ -2202,7 +2216,7 @@ function toggleAlt(btn){const c=btn.nextElementSibling;if(c.style.display==="non
   const db = getFirestore(app);
   const storage = getStorage(app);
   const CLIENT_ID = "jose-neto";
-  const CLIENT_NAME = "José Ferreira de Azevedo Neto";
+  const CLIENT_NAME = "José Neto";
   async function autoRegister(){try{const docRef=doc(db,"clients",CLIENT_ID);const snap=await getDoc(docRef);const now=new Date().toISOString();if(!snap.exists()){await setDoc(docRef,{nome:CLIENT_NAME,registeredAt:now,lastActivity:now,portalUrl:window.location.href.split('?')[0]});}else{await setDoc(docRef,{lastActivity:now},{merge:true});}}catch(e){console.log('Auto-register skipped:',e.message);}}
   async function fbSet(key,value){try{await setDoc(doc(db,"clients",CLIENT_ID,"data",key),{value,updatedAt:new Date().toISOString()},{merge:true});}catch(e){localStorage.setItem(key,value);}}
   async function fbGet(key){try{const s=await getDoc(doc(db,"clients",CLIENT_ID,"data",key));if(s.exists())return s.data().value;}catch(e){}return localStorage.getItem(key);}
@@ -2274,6 +2288,5 @@ function toggleAlt(btn){const c=btn.nextElementSibling;if(c.style.display==="non
 
   window.addEventListener('load',()=>{loadAll();loadPhotos();autoRegister();renderFin();});
 </script>
-
 </body>
 </html>
